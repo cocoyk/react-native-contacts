@@ -38,6 +38,7 @@ public class ContactsProvider {
         add(ContactsContract.Data.LOOKUP_KEY);
         add(ContactsContract.Contacts.Data.MIMETYPE);
         add(ContactsContract.Profile.DISPLAY_NAME);
+        add(ContactsContract.CommonDataKinds.Phone.CONTACT_LAST_UPDATED_TIMESTAMP);
         add(Contactables.PHOTO_URI);
         add(StructuredName.DISPLAY_NAME);
         add(StructuredName.GIVEN_NAME);
@@ -340,7 +341,13 @@ public class ContactsProvider {
             Contact contact = map.get(contactId);
             String mimeType = cursor.getString(cursor.getColumnIndex(ContactsContract.Data.MIMETYPE));
             String name = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+            String addTime = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.CONTACT_LAST_UPDATED_TIMESTAMP));
             contact.rawContactId = rawContactId;
+
+            if (!TextUtils.isEmpty(addTime) && TextUtils.isEmpty(contact.addTime)) {
+                contact.addTime = addTime;
+            }
+           
             if (!TextUtils.isEmpty(name) && TextUtils.isEmpty(contact.displayName)) {
                 contact.displayName = name;
             }
@@ -525,6 +532,7 @@ public class ContactsProvider {
     }
 
     private static class Contact {
+        private String addTime = "";
         private String contactId;
         private String rawContactId;
         private String displayName;
@@ -552,6 +560,7 @@ public class ContactsProvider {
 
         public WritableMap toMap() {
             WritableMap contact = Arguments.createMap();
+            contact.putString("addTime", addTime);
             contact.putString("recordID", contactId);
             contact.putString("rawContactId", rawContactId);
             contact.putString("givenName", TextUtils.isEmpty(givenName) ? displayName : givenName);
