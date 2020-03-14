@@ -6,3 +6,6 @@ ios/RCTContacts.xcodeproj/project.xcworkspace
 .idea
 
 .npm-debug.log
+android/.settings/org.eclipse.buildship.core.prefs
+example/android/.project
+example/android/.settings/org.eclipse.buildship.core.prefs
