@@ -7,7 +7,7 @@ Ask questions on [stackoverflow](https://stackoverflow.com/questions/tagged/reac
 ## Usage
 `getAll` is a database intensive process, and can take a long time to complete depending on the size of the contacts list. Because of this, it is recommended you access the `getAll` method before it is needed, and cache the results for future use.
 ```js
-import Contacts from 'react-native-contacts';
+import Contacts from 'yq-react-native-contacts';
 
 Contacts.getAll((err, contacts) => {
   if (err) {
@@ -22,7 +22,7 @@ See the full [API](#api) for more methods.
 On android you must request permissions beforehand
 ```js
 import { PermissionsAndroid } from 'react-native';
-import Contacts from 'react-native-contacts';
+import Contacts from 'yq-react-native-contacts';
 
 PermissionsAndroid.request(
   PermissionsAndroid.PERMISSIONS.READ_CONTACTS,
