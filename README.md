@@ -48,13 +48,13 @@ _Please read this entire section._
 ### npm
 
 ```
-npm install react-native-contacts --save
+npm install yq-react-native-contacts --save
 ```
 
 ### yarn
 
 ```
-yarn add react-native-contacts
+yarn add yq-react-native-contacts
 ```
 
 ### react native version 60 and above
@@ -69,7 +69,7 @@ Starting with 0.60 on iOS you have to do the following:
 ```
 target 'app' do
   ...
-  pod 'react-native-contacts', :path => '../node_modules/react-native-contacts' <-- add me
+  pod 'react-native-contacts', :path => '../node_modules/yq-react-native-contacts' <-- add me
   ...
 end
 ```
@@ -97,8 +97,8 @@ For react native versions 0.60 and above you have to use Android X. Android X su
 
 ```gradle
 ...
-include ':react-native-contacts'
-project(':react-native-contacts').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-contacts/android')
+include ':yq-react-native-contacts'
+project(':yq-react-native-contacts').projectDir = new File(rootProject.projectDir, '../node_modules/yq-react-native-contacts/android')
 ```
 
 2. In `android/app/build.gradle`
@@ -107,7 +107,7 @@ project(':react-native-contacts').projectDir = new File(rootProject.projectDir, 
 ...
 dependencies {
     ...
-    implementation project(':react-native-contacts')
+    implementation project(':yq-react-native-contacts')
 }
 ```
 
